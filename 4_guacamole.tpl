@@ -37,51 +37,63 @@ sudo mkdir /etc/guacamole
 
 echo "<user-mapping>
   <authorize username=\"guacadmin\" password=\"${vm_password}\">
-    <connection name=\"First region : ${azr_r1_location_short}-${application_1}\">
+    <connection name=\"Region 1 Azure : ${azr_r1_location_short}-${application_1}\">
       <protocol>ssh</protocol>
       <param name=\"hostname\">${hostname_r1_app1}</param>
       <param name=\"username\">admin-lab</param>
       <param name=\"password\">${vm_password}</param>
     </connection>
-    <connection name=\"First region : ${azr_r1_location_short}-${application_2}\">
+    <connection name=\"Region 1 Azure: ${azr_r1_location_short}-${application_2}\">
       <protocol>ssh</protocol>
       <param name=\"hostname\">${hostname_r1_app2}</param>
       <param name=\"username\">admin-lab</param>
       <param name=\"password\">${vm_password}</param>
     </connection>
-    <connection name=\"Second region : ${azr_r2_location_short}-${application_1}\">
+    <connection name=\"Region 2 Azure : ${azr_r2_location_short}-${application_1}\">
       <protocol>ssh</protocol>
       <param name=\"hostname\">${hostname_r2_app1}</param>
       <param name=\"username\">admin-lab</param>
       <param name=\"password\">${vm_password}</param>
     </connection>
-    <connection name=\"Second region : ${azr_r2_location_short}-${application_2}\">
+    <connection name=\"Region 2 Azure : ${azr_r2_location_short}-${application_2}\">
       <protocol>ssh</protocol>
       <param name=\"hostname\">${hostname_r2_app2}</param>
       <param name=\"username\">admin-lab</param>
       <param name=\"password\">${vm_password}</param>
     </connection>
-    <connection name=\"First region : ${azr_r1_location_short}-${application_1}-nat-a (vip: ${hostname_r1_spoke_a_app1_nat})\">
+    <connection name=\"Region 1 Azure : ${azr_r1_location_short}-${application_1}-nat-a (vip: ${hostname_r1_spoke_a_app1_nat})\">
       <protocol>ssh</protocol>
       <param name=\"hostname\">${hostname_r1_spoke_a_app1_nat}</param>
       <param name=\"username\">admin-lab</param>
       <param name=\"password\">${vm_password}</param>
     </connection>
-    <connection name=\"First region : ${azr_r1_location_short}-${application_1}-nat-b (vip: ${hostname_r1_spoke_b_app1_nat})\">
+    <connection name=\"Region 1 Azure : ${azr_r1_location_short}-${application_1}-nat-b (vip: ${hostname_r1_spoke_b_app1_nat})\">
       <protocol>ssh</protocol>
       <param name=\"hostname\">${hostname_r1_spoke_b_app1_nat}</param>
       <param name=\"username\">admin-lab</param>
       <param name=\"password\">${vm_password}</param>
     </connection>
-    <connection name=\"Third region : ${aws_r1_location_short}-${application_1}\">
+    <connection name=\"Region 1 AWS : ${aws_r1_location_short}-${application_1}\">
       <protocol>ssh</protocol>
       <param name=\"hostname\">${hostname_aws_r1_app1}</param>
       <param name=\"username\">ubuntu</param>
       <param name=\"password\">${vm_password}</param>
     </connection>
-    <connection name=\"Third region : ${aws_r1_location_short}-${application_2}\">
+    <connection name=\"Region 1 AWS : ${aws_r1_location_short}-${application_2}\">
       <protocol>ssh</protocol>
       <param name=\"hostname\">${hostname_aws_r1_app2}</param>
+      <param name=\"username\">ubuntu</param>
+      <param name=\"password\">${vm_password}</param>
+    </connection>
+    <connection name=\"Region 2 AWS : ${aws_r2_location_short}-${application_1}\">
+      <protocol>ssh</protocol>
+      <param name=\"hostname\">${hostname_aws_r2_app1}</param>
+      <param name=\"username\">ubuntu</param>
+      <param name=\"password\">${vm_password}</param>
+    </connection>
+    <connection name=\"Region 2 AWS : ${aws_r2_location_short}-${application_2}\">
+      <protocol>ssh</protocol>
+      <param name=\"hostname\">${hostname_aws_r2_app2}</param>
       <param name=\"username\">ubuntu</param>
       <param name=\"password\">${vm_password}</param>
     </connection>

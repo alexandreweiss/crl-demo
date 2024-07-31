@@ -3,19 +3,19 @@ variable "customer_name" {
   default     = "contoso"
 }
 
-variable "remote_connect_src_ip_r1" {
+variable "remote_connect_src_ip" {
   description = "Source IP to allow Instance connect"
   default     = ["0.0.0.0/0"]
 }
 
 variable "azr_r1_location" {
-  default     = "West Europe"
+  default     = "France Central"
   description = "region to deploy resources"
   type        = string
 }
 
 variable "azr_r1_location_short" {
-  default     = "we"
+  default     = "frc"
   description = "region to deploy resources"
   type        = string
 }
@@ -56,13 +56,13 @@ variable "remote_connect_src_ip_r2" {
 }
 
 variable "azr_r2_location" {
-  default     = "France Central"
+  default     = "Sweden Central"
   description = "region to deploy resources"
   type        = string
 }
 
 variable "azr_r2_location_short" {
-  default     = "frc"
+  default     = "swc"
   description = "region to deploy resources"
   type        = string
 }
@@ -115,6 +115,33 @@ variable "aws_r1_spoke_app2_cidr" {
   default     = "10.32.0.0/24"
 }
 
+variable "aws_r2_location" {
+  default     = "eu-west-3"
+  description = "region to deploy resources"
+  type        = string
+}
+
+variable "aws_r2_location_short" {
+  default     = "par"
+  description = "region to deploy resources"
+  type        = string
+}
+
+variable "aws_r2_transit_cidr" {
+  description = "CIDR block allocated to transit in region r2"
+  default     = "10.40.0.0/23"
+}
+
+variable "aws_r2_spoke_app1_cidr" {
+  description = "CIDR block allocated to spoke 1 in region r2"
+  default     = "10.41.0.0/24"
+}
+
+variable "aws_r2_spoke_app2_cidr" {
+  description = "CIDR block allocated to spoke 2 in region r2"
+  default     = "10.42.0.0/24"
+}
+
 variable "application_1" {
   description = "Name of application 1"
   default     = "MyApp1"
@@ -149,6 +176,11 @@ variable "controller_ip" {
 }
 
 variable "customer_website" {
-  description = "FQDN of customer website"
+  description = "FQDN of customer website (used in DCF domain webgroup)"
   default     = "www.aviatrix.com"
+}
+
+variable "customer_website_url" {
+  description = "URL of customer website (used in gatus, including protocol)"
+  default     = "https://www.aviatrix.com"
 }

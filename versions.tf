@@ -8,12 +8,12 @@ terraform {
       version = "~>3.0"
     }
   }
-  cloud {
-    organization = "ananableu"
-    workspaces {
-      name = "acp-demo"
-    }
-  }
+  # cloud {
+  #   organization = "ananableu"
+  #   workspaces {
+  #     name = "crl-demo"
+  #   }
+  # }
 }
 
 provider "aviatrix" {
@@ -27,3 +27,14 @@ provider "azurerm" {
 
   }
 }
+
+provider "aws" {
+  region = "eu-central-1"
+  alias  = "r1"
+}
+
+provider "aws" {
+  region = "eu-west-3"
+  alias  = "r2"
+}
+

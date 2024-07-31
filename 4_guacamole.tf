@@ -43,11 +43,14 @@ data "template_file" "guacamole_config" {
     hostname_r2_app2             = module.azr_r2_app2_vm.vm_private_ip
     hostname_aws_r1_app1         = module.aws_r1_app1_vm.private_ip
     hostname_aws_r1_app2         = module.aws_r1_app2_vm.private_ip
+    hostname_aws_r2_app1         = module.aws_r1_app1_vm.private_ip
+    hostname_aws_r2_app2         = module.aws_r1_app2_vm.private_ip
     hostname_r1_spoke_a_app1_nat = var.azr_r1_spoke_app1_nata_advertised_ip
     hostname_r1_spoke_b_app1_nat = var.azr_r1_spoke_app1_natb_advertised_ip
     azr_r1_location_short        = var.azr_r1_location_short
     azr_r2_location_short        = var.azr_r2_location_short
     aws_r1_location_short        = var.aws_r1_location_short
+    aws_r2_location_short        = var.aws_r2_location_short
     application_1                = var.application_1
     application_2                = var.application_2
     vm_password                  = var.vm_password

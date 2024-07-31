@@ -37,6 +37,21 @@ module "transits" {
       transit_region_name = var.aws_r1_location,
       transit_asn         = 65103,
       transit_name        = "aws-${var.aws_r1_location_short}-${var.customer_name}-transit"
+    },
+
+    transit-aws-r2 = {
+      transit_cloud       = "AWS",
+      transit_cidr        = var.aws_r2_transit_cidr,
+      transit_region_name = var.aws_r2_location,
+      transit_asn         = 65104,
+      transit_name        = "aws-${var.aws_r2_location_short}-${var.customer_name}-transit"
     }
+    # w-transit-azr-r2b = {
+    #   transit_cloud       = "azure",
+    #   transit_cidr        = "10.77.0.0/23",
+    #   transit_region_name = var.azr_r2_location,
+    #   transit_asn         = 65105,
+    #   transit_name        = "azr-${var.azr_r2_location_short}-${var.customer_name}-transit-2"
+    # },
   }
 }

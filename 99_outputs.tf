@@ -30,6 +30,14 @@ output "ssh_aws_r1_app2" {
   value = module.aws_r1_app2_vm.private_ip
 }
 
+output "ssh_aws_r2_app1" {
+  value = module.aws_r2_app1_vm.private_ip
+}
+
+output "ssh_aws_r2_app2" {
+  value = module.aws_r2_app2_vm.private_ip
+}
+
 output "azr_r1" {
   value = var.azr_r1_location
 }
@@ -43,7 +51,7 @@ output "guacamole_fqdn" {
 }
 
 output "island_vnet_connectivity" {
-  value = "http://${module.azr_r1_spoke_island.spoke_gateway.eip}"
+  value = nonsensitive("http://${module.azr_r1_spoke_island.spoke_gateway.eip}")
 }
 
 # output "private_key" {

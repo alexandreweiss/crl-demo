@@ -37,9 +37,9 @@ resource "azurerm_storage_share" "island_aci_share" {
 resource "local_file" "island_config_yaml" {
   filename = "island-config.yaml"
   content = templatefile("${path.module}/1_azr_r1_island_config.tpl",
-    { "customer_name"    = var.customer_name,
-      "application_2"    = var.application_2,
-      "customer_website" = var.customer_website
+    { "customer_name"        = var.customer_name,
+      "application_2"        = var.application_2,
+      "customer_website_url" = var.customer_website_url
     }
   )
 }
