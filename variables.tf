@@ -25,6 +25,11 @@ variable "azr_r1_transit_cidr" {
   default     = "10.10.0.0/23"
 }
 
+variable "azr_r1_egress_transit_cidr" {
+  description = "CIDR block allocated to egress transit in region r1"
+  default     = "10.14.0.0/23"
+}
+
 variable "azr_r1_spoke_app1_cidr" {
   description = "CIDR block allocated to spoke 1 in region r1"
   default     = "10.11.0.0/24"

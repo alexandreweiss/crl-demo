@@ -8,7 +8,7 @@ module "azr_r1_guacamole_vm" {
   location_short      = var.azr_r1_location_short
   index_number        = 01
   subnet_id           = module.azr_r1_spoke_app1.vpc.public_subnets[1].subnet_id
-  resource_group_name = data.aviatrix_vpc.azr_r1_spoke_app1_vpc.resource_group
+  resource_group_name = azurerm_resource_group.azr_r1_spoke_app1_rg.name
   customer_name       = var.customer_name
   admin_password      = var.vm_password
   # custom_data         = data.template_cloudinit_config.config.rendered
@@ -29,7 +29,7 @@ resource "azurerm_network_security_rule" "guacamole_https" {
   destination_port_range      = "443"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = data.aviatrix_vpc.azr_r1_spoke_app1_vpc.resource_group
+  resource_group_name         = azurerm_resource_group.azr_r1_spoke_app1_rg.name
   network_security_group_name = module.azr_r1_guacamole_vm.nsg_name
 }
 
