@@ -46,6 +46,15 @@ output "azr_r2" {
   value = var.azr_r2_location
 }
 
+output "aws_r1" {
+  value = var.aws_r1_location
+}
+
+output "aws_r2" {
+  value = var.aws_r2_location
+}
+
+
 output "guacamole_fqdn" {
   value = nonsensitive("https://${module.azr_r1_guacamole_vm.public_ip}/#/index.html?username=guacadmin&password=${var.vm_password}")
 }

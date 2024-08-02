@@ -163,11 +163,6 @@ resource "aviatrix_gateway_dnat" "test_dnat" {
   }
 }
 
-output "spoke_island" {
-  value     = module.azr_r1_spoke_island
-  sensitive = true
-}
-
 resource "azurerm_network_security_rule" "inbound-http" {
   access                      = "Allow"
   direction                   = "Inbound"

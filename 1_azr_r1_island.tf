@@ -9,10 +9,6 @@ resource "null_resource" "island_always_run" {
   }
 }
 
-output "island_random_integer" {
-  value = random_integer.island_example.result
-}
-
 resource "azurerm_resource_group" "island_vms_rg" {
   location = var.azr_r1_location
   name     = "island-vms-rg"

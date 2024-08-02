@@ -1,4 +1,4 @@
-# ACP Demo
+# CRL Demo
 All artifacts for demo.
 
 # Context
@@ -7,19 +7,21 @@ For that demo, we need :
 
 - An Aviatrix Controller and Copilot deployed in a dedicated vnet.
 
-- Aviatrix transit deployed in two Azure regions and one AWS region :
-  - First transit in Azure West Europe named we in the code,
-  - Second transit in Azure France Central named frc in the code,
-  - Third transit in AWS eu-central-1 named fra in the code
-  - Standard peering between those three regions over Azure and AWS backbone.
+- Aviatrix transit deployed in two Azure regions and two AWS region :
+  - First transit with Firenet / Palo Alto in Azure France Central named frc in the code,
+  - Second transit in Azure Sweden Central named swc in the code,
+  - Third transit in AWS eu-central-1 named fra in the code,
+  - Fourth transit in AWS eu-west-3 named par in the code
+  - Standard peering between those four regions over Azure and AWS backbone.
+  - Dedicated egress transit with Firenet / Palo Alto is deployed in first region to be used as centralised egress for Azure frc region.
 
 - Aviatrix spoke deployed in each of the above region :
   - One island vnet not connected to transit in the first region,
   - Two vnets, each with an Aviatrix spoke in first region,
   - Two vnets with overlapping CIDRs, each with an Aviatrix spoke in first region,
-  - Two vnets, each with an Aviatrix spoke in second region,
-  - Two vnets, each with an Aviatrix spoke in third region,
+  - Two vnets, each with an Aviatrix spoke in region two, three and four,
   - Each spoke is peered with its regional transit (except island vnet).
+  - Each spoke in Azure frc region (except NAT) is also peered to dedicated egress transit,
   - Each spoke contains a test VM instance accessible via Guacamole jumpbox
   - Guacamole server is deployed in the first spoke of the first region. (Search for the URL to connect in the output after terraform deployment)
   - Guacamole server is also used as a reverse proxy (NGINX) to connect to first application in opposite region across Aviatrix transit.
@@ -44,6 +46,7 @@ Diagram of the overall architecture :
   - can access github.com to clone this repository,
   - can execute terraform code.
 - A terraform.tfvars containing values like in terraform.tfvars.sample
+- Once deployed, perform Firewall Vendor integration
   
 # Assumptions
 
@@ -69,16 +72,19 @@ Diagram of the overall architecture :
 - Private endpoint deployed in first region, second spoke
 - Connected using Linux SBM Client in first region, first spoke
 - Test: 
-  - connect via Guacamole to we-Enovia
+  - connect via Guacamole to application 1 in Azure frc region
   - df -h, 
-  - ls /mnt/azrweswbsa
+  - ls /mnt/*storageaccountname*
 
+## Test E/W filtering via Firenet and Palo Alto
+- Enable inspection of Application 2 vnet in Azure frc region
+- Try to ping from Application 1 to Application 2 in Azure frc region
+- Browse firewall log to check traffic is going through
+  
 ## Internet egress filtering for island virtual networks
 - Browse the Azure Container Instance to check at internet connectivity
 - Play with Distributed Cloud Firewall
 
-## Demonstrate Aviatrix Edge deployment via Copilot GUI
-- Use serial under the box to create edge in Copilot,
-- Plug the box to internet using port0 and wait for the bootstrap to occur,
-- Deploy an Aviatrix Edge on top of the box,
-- Attach it to transit.
+## Internet egress via Palo Alto in Azure frc region
+- Connect to application 1 in Azure frc region to test curl http://monip.org
+- Compare with firewall IP address on untrusted interface.
