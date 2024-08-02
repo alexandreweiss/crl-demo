@@ -4,7 +4,7 @@ customer_name = "MyCustomerName"
 # Customer website domain name for egress filtering testing
 customer_website = "www.mywebsite.com"
 # Customer website URL for egress filtering testing
-customer_website_url = "https://www.crelan.be/nl/particulieren"
+customer_website_url = "https://www.mywebsite.com/restofurl"
 # Controller IP address or FQDN
 controller_ip = "x.x.x.x"
 # Name of the Azure account that is onboarded to the controller
