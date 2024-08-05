@@ -53,6 +53,26 @@ Diagram of the overall architecture :
 - For fast deploy, we assume demo is deployed as NON highly available. This can be changed easily by updating terraform code
 - We deploy Controller and Copilot is same region as first transit in a dedicated vnet
 
+# Deployment and know issues
+
+## Dependencies to be troubleshooted
+
+### Comment the line where we attach to dedicated egress
+
+Comment the below in the 1_azr_r1_spokes.tf to disable Azure first region spokes attachment to dedicated egress
+transit_gw_egress = module.transits.region_transit_map["${var.azr_r1_location}"][0]
+
+```
+terraform init
+terraform apply
+```
+
+Once deployed, uncomment both lines to attach spokes to transit.
+
+### Need 2 applies
+
+You may need to run terraform apply once more to solve dependency issue with NAT use case
+
 # Scenario in this demo
 
 ## Test inbound connectivity from internet
