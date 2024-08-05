@@ -55,6 +55,7 @@ Diagram of the overall architecture :
 
 # Deployment and know issues
 
+To be corrected in future release
 ## Dependencies to be troubleshooted
 
 ### Comment the line where we attach to dedicated egress
@@ -69,10 +70,26 @@ terraform apply
 
 Once deployed, uncomment both lines to attach spokes to transit.
 
-### Need 2 applies
+### Need 3 applies
 
-You may need to run terraform apply once more to solve dependency issue with NAT use case
+You may need to run terraform apply once or two more to solve dependency issue with NAT use case as described below :
+```
+╷
+│ Error: failed to configure policies for 'customized_snat' mode due to: rest API edit_gw_customized_snat_config Post failed: Gateway with name dummy does not exist
+│
+│   with module.azr_r1_spoke_app1_natb_rules.aviatrix_gateway_snat.gw_2[0],
+│   on .terraform\modules\azr_r1_spoke_app1_natb_rules\main.tf line 43, in resource "aviatrix_gateway_snat" "gw_2":
+│   43: resource "aviatrix_gateway_snat" "gw_2" {
+│
+╵
+╷
+│ Error: failed to update DNAT for gateway(name: ) due to: rest API update_dnat_config Post failed: following parameters are required: gateway_name, policy_list
+│
+│   with module.azr_r1_spoke_app1_natb_rules.aviatrix_gateway_dnat.dnat_rules_gw2[0],
+│   on .terraform\modules\azr_r1_spoke_app1_natb_rules\main.tf line 118, in resource "aviatrix_gateway_dnat" "dnat_rules_gw2":
+│  118: resource "aviatrix_gateway_dnat" "dnat_rules_gw2" {
 
+```
 # Scenario in this demo
 
 ## Test inbound connectivity from internet
