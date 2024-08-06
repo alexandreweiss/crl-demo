@@ -7,18 +7,18 @@ module "azr_r1_spoke_app1" {
   source  = "terraform-aviatrix-modules/mc-spoke/aviatrix"
   version = "1.6.7"
 
-  cloud          = "Azure"
-  name           = "azr-${var.azr_r1_location_short}-spoke-${var.application_1}-${var.customer_name}"
-  resource_group = azurerm_resource_group.azr_r1_spoke_app1_rg.name
-  cidr           = var.azr_r1_spoke_app1_cidr
-  region         = var.azr_r1_location
-  account        = var.azr_account
-  transit_gw     = module.transits.region_transit_map["${var.azr_r1_location}"][1]
-  //transit_gw_egress = module.transits.region_transit_map["${var.azr_r1_location}"][0]
-  attached       = true
-  ha_gw          = false
-  single_az_ha   = false
-  single_ip_snat = false
+  cloud             = "Azure"
+  name              = "azr-${var.azr_r1_location_short}-spoke-${var.application_1}-${var.customer_name}"
+  resource_group    = azurerm_resource_group.azr_r1_spoke_app1_rg.name
+  cidr              = var.azr_r1_spoke_app1_cidr
+  region            = var.azr_r1_location
+  account           = var.azr_account
+  transit_gw        = module.transits.region_transit_map["${var.azr_r1_location}"][1]
+  transit_gw_egress = module.transits.region_transit_map["${var.azr_r1_location}"][0]
+  attached          = true
+  ha_gw             = false
+  single_az_ha      = false
+  single_ip_snat    = false
 }
 
 ## Deploy Linux as Application 1 server
@@ -61,18 +61,18 @@ module "azr_r1_spoke_app2" {
   source  = "terraform-aviatrix-modules/mc-spoke/aviatrix"
   version = "1.6.7"
 
-  cloud          = "Azure"
-  name           = "azr-${var.azr_r1_location_short}-spoke-${var.application_2}-${var.customer_name}"
-  resource_group = azurerm_resource_group.azr_r1_spoke_app2_rg.name
-  cidr           = var.azr_r1_spoke_app2_cidr
-  region         = var.azr_r1_location
-  account        = var.azr_account
-  transit_gw     = module.transits.region_transit_map["${var.azr_r1_location}"][1]
-  //transit_gw_egress = module.transits.region_transit_map["${var.azr_r1_location}"][0]
-  attached       = true
-  ha_gw          = false
-  single_az_ha   = false
-  single_ip_snat = false
+  cloud             = "Azure"
+  name              = "azr-${var.azr_r1_location_short}-spoke-${var.application_2}-${var.customer_name}"
+  resource_group    = azurerm_resource_group.azr_r1_spoke_app2_rg.name
+  cidr              = var.azr_r1_spoke_app2_cidr
+  region            = var.azr_r1_location
+  account           = var.azr_account
+  transit_gw        = module.transits.region_transit_map["${var.azr_r1_location}"][1]
+  transit_gw_egress = module.transits.region_transit_map["${var.azr_r1_location}"][0]
+  attached          = true
+  ha_gw             = false
+  single_az_ha      = false
+  single_ip_snat    = false
 }
 
 ## Deploy Linux as Application 2 server

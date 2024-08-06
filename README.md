@@ -97,13 +97,15 @@ You may need to run terraform apply once or two more to solve dependency issue w
 - Test:
   - Browse Guacamole IP using https://w.x.y.z/app
   - Look at NGINX announcement
+  
+## Internet egress via Palo Alto in Azure frc region aka. Firenet Centralised egress
+- Connect to application 1 in Azure frc region to test curl http://monip.org
+- Compare with firewall IP address on untrusted interface.
 
-## Demo overlapping IP across spoke. Kubernetes "cookie-cutter" deployment use case
-- Two spokes deployed in first region using same CIDR block.
-- Each advertise a unique ip 172.20.20.22/32 and 172.20.20.23/32
-- Test:
-  - connect via Guacamole to we-Enovia-nat-a and "ip a"
-  - connect via Guacamole to we-Enovia-nat-b and "ip a"
+## Test E/W filtering via Firenet and Palo Alto
+- Enable inspection of Application 2 vnet in Azure frc region
+- Try to ping from Application 1 to Application 2 in Azure frc region
+- Browse firewall log to check traffic is going through
 
 ## Private Endpoint connectivity test across Aviatrix Data Plane
 - Private endpoint deployed in first region, second spoke
@@ -113,15 +115,15 @@ You may need to run terraform apply once or two more to solve dependency issue w
   - df -h, 
   - ls /mnt/*storageaccountname*
 
-## Test E/W filtering via Firenet and Palo Alto
-- Enable inspection of Application 2 vnet in Azure frc region
-- Try to ping from Application 1 to Application 2 in Azure frc region
-- Browse firewall log to check traffic is going through
-  
 ## Internet egress filtering for island virtual networks
 - Browse the Azure Container Instance to check at internet connectivity
 - Play with Distributed Cloud Firewall
 
-## Internet egress via Palo Alto in Azure frc region
-- Connect to application 1 in Azure frc region to test curl http://monip.org
-- Compare with firewall IP address on untrusted interface.
+## Demo overlapping IP across spoke. Kubernetes "cookie-cutter" deployment use case
+- Two spokes deployed in first region using same CIDR block.
+- Each advertise a unique ip 172.20.20.22/32 and 172.20.20.23/32
+- Test:
+  - connect via Guacamole to we-Enovia-nat-a and "ip a"
+  - connect via Guacamole to we-Enovia-nat-b and "ip a"
+
+
